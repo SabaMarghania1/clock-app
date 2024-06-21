@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+  --main-text: white;
+  --color-titles: #303030;
+
+  --bg-desktop: url('./assets/mobile/bg-image-daytime.jpg');
+  --bg-tablet: url('./assets/tablet/bg-image-daytime.jpg');
+  --bg-mobile: url('./assets/mobile/bg-image-daytime.jpg');
+}
+
+[data-theme='night'] {
+  --color-titles: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.5s;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-mobile);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed; /* Use fixed instead of absolute to ensure it covers the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+  z-index: 1; /* Increase z-index to ensure it's above other content */
+}
+
+.overlay-content {
+  position: relative; /* Ensure content within the overlay respects stacking context */
+  z-index: 2; /* Ensure content is above the overlay */
+}
