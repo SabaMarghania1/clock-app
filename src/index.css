@@ -4,42 +4,225 @@
   --main-text: white;
   --color-titles: #303030;
 
-  --bg-desktop: url('./assets/mobile/bg-image-daytime.jpg');
+  --info-overlay: 255, 255, 255;
+
+  --bg-desktop: url('./assets/desktop/bg-image-daytime.jpg');
   --bg-tablet: url('./assets/tablet/bg-image-daytime.jpg');
   --bg-mobile: url('./assets/mobile/bg-image-daytime.jpg');
 }
 
 [data-theme='night'] {
   --color-titles: white;
+
+  --info-overlay: 0, 0, 0;
+
+  --bg-desktop: url('./assets/desktop/bg-image-nighttime.jpg');
+  --bg-tablet: url('./assets/tablet/bg-image-nighttime.jpg');
+  --bg-mobile: url('./assets/mobile/bg-image-nighttime.jpg');
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
 }
 
 body {
+  font-family: 'Inter', sans-serif;
+  color: var(--main-text);
   width: 100%;
   height: 100vh;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg-mobile);
-  position: relative;
 }
 
-body::before {
+ul {
+  list-style: none;
+}
+#root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-image: var(--bg-mobile);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#root::after {
   content: '';
-  position: fixed; /* Use fixed instead of absolute to ensure it covers the viewport */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
-  z-index: 1; /* Increase z-index to ensure it's above other content */
+  background-color: rgba(48, 48, 48, 0.5);
+  z-index: 1;
 }
 
-.overlay-content {
-  position: relative; /* Ensure content within the overlay respects stacking context */
-  z-index: 2; /* Ensure content is above the overlay */
+.main {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-left: 26px;
+  padding-top: 32px;
+}
+
+.quote-container {
+  max-width: 282px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 227px;
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  right: -40px;
+  cursor: pointer;
+}
+
+.quote {
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.author {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.time-range {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* margin-bottom: 16px; */
+}
+
+.time-range span {
+  font-size: 15px;
+  letter-spacing: 3px;
+  font-weight: 400;
+  line-height: 25px;
+}
+.time {
+  font-size: 100px;
+  display: flex;
+  align-items: baseline;
+  font-weight: 700;
+}
+
+.time span {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.location {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 46px;
+}
+
+.more {
+  display: flex;
+  padding: 13px 8px 12px 17px;
+  background-color: white;
+  width: 115px;
+  height: 39px;
+  color: black;
+  border-radius: 28px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.more .text {
+  color: #000;
+  font-size: 12px;
+  letter-spacing: 3.75px;
+  line-height: 14px;
+  font-weight: 700;
+  opacity: 0.5;
+}
+
+.circle {
+  width: 32px;
+  height: 32px;
+  background-color: #303030;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle:hover {
+  background: #999;
+}
+
+.circle.expanded {
+  transform: rotate(180deg);
+}
+
+.info-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 256px;
+  background-color: rgba(var(--info-overlay), 0.75);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding: 48px 26px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 5;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stats-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stats-item p {
+  color: #303030;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 2px;
+}
+
+.stats-item span {
+  color: #303030;
+  text-align: right;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@media (min-width: 768px) {
+  #root {
+    background: var(--bg-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  #root {
+    background: var(--bg-desktop);
+  }
 }
