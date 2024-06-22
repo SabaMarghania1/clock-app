@@ -4,7 +4,6 @@ import icon from '../assets/shared/icon-refresh.svg';
 
 const Quotes = () => {
   const [quote, setQuote] = useState([]);
-  console.log(quote);
 
   const fetchQuotes = async () => {
     try {

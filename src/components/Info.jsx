@@ -1,22 +1,23 @@
-export default function Info() {
+export default function Info({info}) {
+  const {timezone, day_of_year, day_of_week, week_number} = info;
   return (
     <section className="info-container">
       <ul className="stats">
         <li className="stats-item">
           <p>CURRENT TIMEZONE</p>
-          <span>Europe/London</span>
+          <span>{timezone}</span>
         </li>
         <li className="stats-item">
           <p>DAY OF THE YEAR</p>
-          <span>295</span>
+          <span>{day_of_year}</span>
         </li>
         <li className="stats-item">
           <p>DAY OF THE WEEK</p>
-          <span>5</span>
+          <span>{day_of_week}</span>
         </li>
         <li className="stats-item">
           <p>WEEK NUMBER</p>
-          <span>42</span>
+          <span>{week_number}</span>
         </li>
       </ul>
     </section>

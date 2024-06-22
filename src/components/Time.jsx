@@ -3,7 +3,12 @@ import moon from '../assets/shared/icon-moon.svg';
 
 import iconArrow from '../assets/shared/icon-arrow-down.svg';
 
-export default function Time({handleExpanded, expanded}) {
+export default function Time({handleExpanded, expanded, datetime}) {
+  const date = new Date(datetime);
+  const hour = date.getHours();
+  const minutes = date.getMinutes();
+  console.log(hour, minutes);
+
   const sectionStyle = expanded ? {marginTop: '67px'} : {};
   return (
     <section className="time-container" style={sectionStyle}>
@@ -12,7 +17,7 @@ export default function Time({handleExpanded, expanded}) {
         <p>GOOD MORNING</p>
       </div>
       <p className="time">
-        11:37 <span>BST</span>
+        {hour}:{minutes} <span>BST</span>
       </p>
       <p className="location">IN LONDON, UK</p>
 
