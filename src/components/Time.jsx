@@ -12,7 +12,7 @@ export default function Time({handleExpanded, expanded, datetime, clientInfo}) {
   const [country, city] = clientInfo;
 
   const timeRangeString =
-    hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+    hour < 12 ? 'Good morning' : hour < 16 ? 'Good afternoon' : 'Good evening';
 
   const sectionStyle = expanded ? {marginTop: '67px'} : {};
 
@@ -23,16 +23,18 @@ export default function Time({handleExpanded, expanded, datetime, clientInfo}) {
 
   return (
     <section className="time-container" style={sectionStyle}>
-      <div className="time-range">
-        <img src={hour < 18 || hour <= 5 ? sun : moon} alt="image" />
-        <p>{timeRangeString}</p>
+      <div className="left">
+        <div className="time-range">
+          <img src={hour < 18 || hour <= 5 ? sun : moon} alt="image" />
+          <p>{timeRangeString}</p>
+        </div>
+        <p className="time">
+          {hour}:{formatMinutes} <span>BST</span>
+        </p>
+        <p className="location">
+          IN {city}, {country}
+        </p>
       </div>
-      <p className="time">
-        {hour}:{formatMinutes} <span>BST</span>
-      </p>
-      <p className="location">
-        IN {city}, {country}
-      </p>
 
       <span className="more" role="button" onClick={handleExpanded}>
         <span className="text">MORE</span>
