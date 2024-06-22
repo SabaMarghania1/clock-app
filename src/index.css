@@ -33,6 +33,7 @@ body {
   color: var(--main-text);
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 ul {
@@ -98,7 +99,6 @@ ul {
   display: flex;
   align-items: center;
   gap: 20px;
-  /* margin-bottom: 16px; */
 }
 
 .time-range span {
@@ -192,11 +192,11 @@ ul {
 .stats-item {
   display: flex;
   align-items: center;
+  color: var(--color-titles);
   justify-content: space-between;
 }
 
 .stats-item p {
-  color: #303030;
   font-family: Inter;
   font-size: 10px;
   font-style: normal;
@@ -206,7 +206,6 @@ ul {
 }
 
 .stats-item span {
-  color: #303030;
   text-align: right;
   font-family: Inter;
   font-size: 20px;
@@ -217,12 +216,13 @@ ul {
 
 @media (min-width: 768px) {
   #root {
-    background: var(--bg-tablet);
+    background-image: var(--bg-tablet);
   }
 }
 
 @media (min-width: 1024px) {
   #root {
-    background: var(--bg-desktop);
+    background-image: var(--bg-desktop);
+    background-repeat: no-repeat;
   }
 }

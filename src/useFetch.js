@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-function useFetch(url, interval = 60000) {
+function useFetch(url, interval = null) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -21,11 +21,21 @@ function useFetch(url, interval = 60000) {
 
     fetchData();
 
-    const intervalId = setInterval(fetchData, interval);
+    // Set up interval if interval is provided and valid
+    let intervalId;
+    if (interval && typeof interval === 'number' && interval > 0) {
+      intervalId = setInterval(fetchData, interval);
+    }
 
-    return () => clearInterval(intervalId);
+    // Clean up interval on component unmount
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
   }, [url, interval]);
 
   return {data, error};
 }
+
 export default useFetch;

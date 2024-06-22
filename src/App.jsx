@@ -9,13 +9,14 @@ function App() {
   const [expanded, setExpanded] = useState(false);
 
   const {data: timeInfo, error: timeError} = useFetch(
-    'http://worldtimeapi.org/api/timezone/Asia/Tbilisi'
+    'http://worldtimeapi.org/api/timezone/Asia/Tbilisi',
+    60000
   );
   const {client_ip, datetime} = timeInfo || {};
 
-  const {data: clientInfo, error: clientError} = useFetch(
-    'https://api.ipbase.com/v2/info?apikey=ipb_live_XPsrYmD0Hfwe319OfuuM4DJd9bVD5zty8fa8ucJr&language=en&ip=109.172.197.23'
-  );
+  // const {data: ipInfo, error: ipError} = useFetch(
+  //   `https://api.ipbase.com/v2/info?apikey=ipb_live_CZlgiW8TyVutuY55pjH0YefyOoxyYoadkB8YyRDZ&language=en&ip=${client_ip}`
+  // );
 
   const handleExpanded = () => {
     setExpanded(prev => !prev);
@@ -30,6 +31,8 @@ function App() {
           handleExpanded={handleExpanded}
           datetime={datetime}
           ipAddress={client_ip}
+          // clientInfo={clientInfo }
+          clientInfo={['Georgia', 'Tbilisi']}
         />
         {expanded && <Info info={timeInfo} />}
       </Main>
