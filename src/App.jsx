@@ -9,7 +9,7 @@ function App() {
   const [expanded, setExpanded] = useState(false);
 
   const {data: timeInfo, error: timeError} = useFetch(
-    'http://worldtimeapi.org/api/timezone/Asia/Tbilisi',
+    'https://worldtimeapi.org/api/timezone/Asia/Tbilisi',
     60000
   );
   const {client_ip, datetime} = timeInfo || {};
