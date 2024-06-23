@@ -34,8 +34,8 @@ function App() {
           // clientInfo={clientInfo }
           clientInfo={['Georgia', 'Tbilisi']}
         />
-        {expanded && <Info info={timeInfo} />}
       </Main>
+      {expanded && <Info info={timeInfo} />}
     </>
   );
 }
