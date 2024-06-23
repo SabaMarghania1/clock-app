@@ -13,7 +13,7 @@ export default function Info({info}) {
         </li>
         <li className="stats-item">
           <p>DAY OF THE WEEK</p>
-          <span>{day_of_week}</span>
+          <span>{day_of_week || 7}</span>
         </li>
         <li className="stats-item">
           <p>WEEK NUMBER</p>
